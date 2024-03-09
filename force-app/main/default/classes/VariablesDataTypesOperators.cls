@@ -18,7 +18,7 @@
  * If statements are not specifically covered in the lesson this module, but review module 2 flow control section for an overview if needed.
  * Resources: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_if_else.htm 
  * 
- * @author Your Name
+ * @author Frank Larkin
  */
 
 public with sharing class VariablesDataTypesOperators {
@@ -57,9 +57,12 @@ public with sharing class VariablesDataTypesOperators {
 
         if (a != null && b != null) {
             difference = a + b;
-            difference = abs(difference);
         } else {
             return null;
+        }
+
+        if (difference < 0) {
+            difference = difference + (difference * 2);
         }
 
         return difference; 
@@ -332,10 +335,10 @@ public with sharing class VariablesDataTypesOperators {
     public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
         Double divisionResult = a / b;
+        Integer roundedResult = (Integer)divisionResult;
+        return roundedResult;
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = parseInt(divisionResult);
-        return roundedResult;
     }
 
     /**
