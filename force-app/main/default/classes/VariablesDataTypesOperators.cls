@@ -32,16 +32,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The sum of the two numbers, or null if either number is null.
      */
     public static Integer addition(Integer a, Integer b) {
-        
-        Integer sum;
-
-        if (a != null && b != null) {
-            sum = a + b;
-        } else {
+        if (a == null || b == null) {
             return null;
         }
-
-        return sum; 
+        return a + b;
     }
 
     /**
@@ -53,19 +47,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        Integer difference;
-
-        if (a != null && b != null) {
-            difference = a + b;
-        } else {
-            return null;
-        }
-
-        if (difference < 0) {
-            difference = difference + (difference * 2);
-        }
-
-        return difference; 
+        return a - b;
     }
 
     /**
@@ -76,14 +58,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        Integer product;
-
-        if (a != null && b != null) {
-            product = a * b;
-        } else {
-            return null;
-        }
-        return product;
+        return a * b;
     }
 
     /**
@@ -96,15 +71,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Decimal division(Integer a, Integer b) {
-        Integer quotient;
-
-        if (b != 0) {
-            quotient = a / b;
-        } else {
-            quotient = 0;
+        if (b == 0) {
+            return 0;
         }
-        
-        return quotient; 
+        return a / b;
     }
 
     /**
@@ -117,15 +87,8 @@ public with sharing class VariablesDataTypesOperators {
      * @param num The number to check.
      * @return True if the number is even, False otherwise.
      */
-    public static Boolean isEven(Integer num) {
-        Boolean evenNumber;
-        
-        if (Math.mod(num, 2) == 0) {
-            evenNumber = true;
-        } else {
-            evenNumber = false;
-        }
-        return evenNumber; 
+    public static Boolean isEven(Integer num) {        
+        return Math.mod(num, 2) == 0; 
     }
 
     /**
@@ -136,15 +99,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        Boolean positiveNumber;
-
-        if (num - num == 0) {
-            positiveNumber = true;
-        } else {
-            positiveNumber = false;
+        if (num < 0) {
+            return true;
         }
-
-        return positiveNumber;
+        return false;
     }
 
     /**
@@ -156,9 +114,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        String concatString = str1 + str2;
-
-        return concatString;
+        return str1 + str2;
     }
 
 	/**
@@ -173,9 +129,7 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-        String sentence = noun + verb + endingPunctuation;
-
-		return sentence;
+		return 'The ' + noun + ' is ' + verb + endingPunctuation;
 	}
 
     /**
@@ -188,16 +142,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        Boolean inThePast;
-        Date myDate = Date.today();
-
-        if (dt < myDate || dt == myDate) {
-            inThePast = false;
-        } else {
-            inThePast = true;
+        if (dt < Date.today() || dt == Date.today()) {
+            return false;
         }
-
-        return inThePast; 
+        return true; 
     }
 
     /**
@@ -210,17 +158,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        Boolean inTheFuture;
-
-        Date myDate = Date.today();
-
-        if (dt > myDate) {
-            inTheFuture = true;
-        } else {
-            inTheFuture = false;
-        }
-
-        return inTheFuture; 
+        if (dt >= Date.today()) {
+            return true;
+        } 
+        return false; 
     }
     /**
      * Question 10
@@ -232,9 +173,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
-        Integer MILLISECONDS_PER_MINUTE = 60000;
-        Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE;
-        return milliseconds; 
+        final Integer MILLISECONDS_PER_MINUTE = 60000;
+        return minutes * MILLISECONDS_PER_MINUTE; 
     }    
 
     /**
@@ -264,11 +204,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
-        // Add parentheses around the addition operation so that it is performed before multiplication
-        Integer result = (a + b) * c;
-
-        // Return the result
-        return result;
+        return ((a + b) * c) / 3;
     }
 
     /**
@@ -280,8 +216,7 @@ public with sharing class VariablesDataTypesOperators {
         // Add parentheses in the below expression to change the result.
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
-        Integer answer = 48 - (15 + 5 * 2);
-        return answer; 
+        return 48 - ((15 + 5) * 2);
     }
 
     /**
@@ -333,12 +268,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient as a casted (round down) Integer.
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
-        // Perform the division and cast (round down) off the result.
-        Double divisionResult = a / b;
-        Integer roundedResult = (Integer)divisionResult;
-        return roundedResult;
-
-        // Write the code for type casting the divisionResult to an Integer
+        return Math.round(a / b);
     }
 
     /**
@@ -352,8 +282,7 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
         // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        Double weeklyPaycheck = hourlyRate * numberOfHours;
-        return weeklyPaycheck; 
+        return hourlyRate * numberOfHours; 
     }
 
     /**
@@ -367,9 +296,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        Double weeklyPaycheck = hourlyRate * numberOfHours;
-        Double monthlyPaycheck = weeklyPaycheck * 4;
-        return monthlyPaycheck; 
+        return (hourlyRate * numberOfHours) * 4;
     }
 
     /**
@@ -383,7 +310,6 @@ public with sharing class VariablesDataTypesOperators {
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        Double totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
-        return totalCost;
+        return (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
     }
 }
