@@ -99,10 +99,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        if (num < 0) {
-            return true;
-        }
-        return false;
+        return num > 0;
     }
 
     /**
@@ -142,10 +139,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        if (dt < Date.today() || dt == Date.today()) {
-            return false;
-        }
-        return true; 
+  
+        return dt <= Date.today();
+
     }
 
     /**
@@ -235,9 +231,7 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
         // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double result = ((a * b) - c) / (Double) d + e;
-
-        return result;
+        return ((a * b) - c) / (d + e);
     }
 
     /**
@@ -268,7 +262,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient as a casted (round down) Integer.
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
-        return Math.round(a / b);
+        
+        return Integer.valueOf(a / b);
     }
 
     /**
