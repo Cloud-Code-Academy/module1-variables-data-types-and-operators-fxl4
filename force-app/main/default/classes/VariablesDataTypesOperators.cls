@@ -200,7 +200,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
-        return ((a + b) * c) / 3;
+        return ((a + b) * c);
     }
 
     /**
@@ -231,7 +231,8 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
         // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        return ((a * b) - c) / (d + e);
+        Double resultOfMath = Double.valueOf((((a * b) - c) / d) + e);
+        return resultOfMath;
     }
 
     /**
