@@ -32,10 +32,11 @@ public with sharing class VariablesDataTypesOperators {
      * @return The sum of the two numbers, or null if either number is null.
      */
     public static Integer addition(Integer a, Integer b) {
-        if (a == null || b == null) {
+        if (a == null || b == null){
             return null;
+        } else {
+            return a + b;
         }
-        return a + b;
     }
 
     /**
@@ -71,10 +72,11 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Decimal division(Integer a, Integer b) {
-        if (b == 0) {
+        if (b != 0){
+            return a / b;
+        } else {
             return 0;
         }
-        return a / b;
     }
 
     /**
@@ -139,9 +141,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-  
         return dt <= Date.today();
-
     }
 
     /**
@@ -156,9 +156,11 @@ public with sharing class VariablesDataTypesOperators {
     public static Boolean isDateTodayOrFuture(Date dt) {
         if (dt >= Date.today()) {
             return true;
-        } 
-        return false; 
+        } else {
+            return false; 
+        }    
     }
+
     /**
      * Question 10
      * Converts the number of minutes to milliseconds.
@@ -184,9 +186,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        Integer averageNum = a + b + c;
-        averageNum /= 3;
-        return averageNum; 
+        return (a + b + c) / 3; 
     }
 
     /**
@@ -209,9 +209,6 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the expression after modifications.
      */
     public static Integer adjustOrderOfOperations2() {
-        // Add parentheses in the below expression to change the result.
-        // The result of the expression as it is right now is 43. 
-        // You should add parentheses so that the result of the expression becomes 8.
         return 48 - ((15 + 5) * 2);
     }
 
@@ -230,9 +227,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
-        // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double resultOfMath = Double.valueOf((((a * b) - c) / d) + e);
-        return resultOfMath;
+        return Double.valueOf((((a * b) - c) / d) + e);
     }
 
     /**
@@ -246,12 +241,8 @@ public with sharing class VariablesDataTypesOperators {
         final Double SUBTRACT_FACTOR = 32.0;
         final Double MULTIPLY_FACTOR = 5.0;
         final Double DIVIDE_FACTOR = 9.0;
-        double celsius = (fahrenheit - SUBTRACT_FACTOR) * (MULTIPLY_FACTOR / DIVIDE_FACTOR);
-    
-        return celsius; // Replace null with the variable you used to store the result
-    }
-
-    
+        return (fahrenheit - SUBTRACT_FACTOR) * (MULTIPLY_FACTOR / DIVIDE_FACTOR);
+    } 
 
     /**
      * Question 16
@@ -263,7 +254,6 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient as a casted (round down) Integer.
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
-        
         return Integer.valueOf(a / b);
     }
 
@@ -277,7 +267,6 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the weekly paycheck.
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        // Calculate the weekly paycheck using the formula: rate multiplied by hours
         return hourlyRate * numberOfHours; 
     }
 
